@@ -10,6 +10,7 @@ import {
   Query,
   ParseIntPipe,
   ParseUUIDPipe,
+  UseGuards,
 } from '@nestjs/common';
 
 import { NAST_SERVICE, ORDER_SERVICE } from 'src/config';
@@ -19,6 +20,8 @@ import { paginationDto } from 'src/common/index';
 import { CreateOrderDto, StatusDto } from './dto';
 import { orderPaginationDto } from 'src/products/dto/order-pagination.dto';
 import { query } from 'express';
+import { AuthGuard } from 'src/auth/guards';
+@UseGuards(AuthGuard)
 @Controller('orders')
 export class OrdersController {
   constructor(
